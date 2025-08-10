@@ -128,10 +128,10 @@ function updateCartUI(){
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td class="cell-name">
-        <div class="name">${item.name}</div>
-        <div class="price-mobile">$${currency(item.price)}</div>
+        <div class="name">VND${item.name}</div>
+        <div class="price-mobile">VND${currency(item.price)}</div>
       </td>
-      <td class="cell-price">$${currency(item.price)}</td>
+      <td class="cell-price">VND${currency(item.price)}</td>
       <td class="cell-qty">
         <div class="qty">
           <button class="btn-qty" aria-label="Decrease">−</button>
@@ -139,7 +139,7 @@ function updateCartUI(){
           <button class="btn-qty" aria-label="Increase">+</button>
         </div>
       </td>
-      <td class="cell-sub">$${currency(item.price*item.qty)}</td>
+      <td class="cell-sub">VND${currency(item.price*item.qty)}</td>
       <td class="cell-act"><button class="btn-delete" aria-label="Remove">✕</button></td>`;
     const [btnMinus, qtyInput, btnPlus] = tr.querySelectorAll('.btn-qty, .qty-input, .btn-qty');
     const btnDel = tr.querySelector('.btn-delete');
@@ -216,8 +216,8 @@ function renderOrders(){
       </div>
       <ul class="order-items">${items}</ul>
       <div class="order-total">
-        <div>Subtotal: $${currency(b.subtotal)} | Discount: $${currency(b.discount)} (${b.coupon||'—'}) | Shipping: $${currency(b.shipping)}</div>
-        <div><strong>Total: $${currency(b.total)}</strong></div>
+        <div>Subtotal: ${currency(b.subtotal)}VND | Discount: ${currency(b.discount)}VND (${b.coupon||'—'}) | Shipping: ${currency(b.shipping)}VND</div>
+        <div><strong>Total: ${currency(b.total)}VND</strong></div>
       </div>`;
     listEl.appendChild(li);
   });
