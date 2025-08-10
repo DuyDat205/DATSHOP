@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>TechStore — Contact</title>
+
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+
+</head>
+<body>
+<header class="navbar">
+  <div class="logo">
+<div class="logo">DatShop</div>
+    <nav class="nav-links">
+    </nav>
+  </div>
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="profile.html" id="profileLink">Profile</a>
+    <a href="cart.html">Cart 🛒<span id="cartCount" class="badge">0</span></a>
+    <a href="profile.html" id="loginLink">Login / Register</a>
+    <a href="#" id="logoutLink" style="display:none;">Logout</a>
+  </nav>
+</header>
+
+<section class="contact-form container">
+  <h2>Contact Us</h2>
+  <input type="text" id="cname" placeholder="Your name">
+  <input type="email" id="cemail" placeholder="Your email">
+  <textarea id="cmsg" rows="4" placeholder="Message"></textarea>
+  <button class="btn primary" onclick="showToast('Message sent! We will reply soon.',2000)">Send</button>
+</section>
+
+<script src="main.js"></script>
+</body>
+</html>

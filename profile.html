@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>TechStore — Profile</title>
+
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+
+</head>
+<body>
+<header class="navbar">
+  <div class="logo">
+<div class="logo">DatShop</div>
+    <nav class="nav-links">
+    </nav>
+  </div>
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="profile.html" id="profileLink">Profile</a>
+    <a href="cart.html">Cart 🛒<span id="cartCount" class="badge">0</span></a>
+    <a href="profile.html" id="loginLink">Login / Register</a>
+    <a href="#" id="logoutLink" style="display:none;">Logout</a>
+  </nav>
+</header>
+
+<section class="auth-form" id="loginSection">
+  <h2>Login</h2>
+  <input type="text" id="loginUsername" placeholder="Username" />
+  <input type="password" id="loginPassword" placeholder="Password" />
+  <button class="btn primary" onclick="handleLogin()">Login</button>
+  <p style="text-align:center;">No account? <a href="#" onclick="showRegister()">Register</a></p>
+</section>
+
+<section class="auth-form" id="registerSection" style="display:none;">
+  <h2>Register</h2>
+  <input type="text" id="regUsername" placeholder="Username" />
+  <input type="email" id="regEmail" placeholder="Email" />
+  <input type="password" id="regPassword" placeholder="Password" />
+  <input type="password" id="regConfirm" placeholder="Confirm Password" />
+  <button class="btn primary" onclick="handleRegister()">Create Account</button>
+  <p style="text-align:center;">Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+</section>
+
+<section class="profile-container" id="profileSection" style="display:none;">
+  <h2>Hello, <span id="userDisplay">Guest</span></h2>
+  <h3>Order History</h3>
+  <ul id="ordersList" class="orders-list"></ul>
+</section>
+
+<script src="main.js"></script>
+<script>
+  const loginSection = document.getElementById('loginSection');
+  const registerSection = document.getElementById('registerSection');
+  const profileSection = document.getElementById('profileSection');
+  const logged = localStorage.getItem('loggedInUser');
+
+  if (logged) showProfile(logged); else showLogin();
+
+  function showLogin() { loginSection.style.display='block'; registerSection.style.display='none'; profileSection.style.display='none'; }
+  function showRegister() { loginSection.style.display='none'; registerSection.style.display='block'; profileSection.style.display='none'; }
+  function showProfile(user) { loginSection.style.display='none'; registerSection.style.display='none'; profileSection.style.display='block'; renderOrders(); }
+
+  function handleRegister() { 
+    const u=document.getElementById('regUsername').value.trim();
+    const e=document.getElementById('regEmail').value.trim();
+    const p=document.getElementById('regPassword').value;
+    const c=document.getElementById('regConfirm').value;
+    if(!u||!e||!p||p!==c){ showToast('Please check your information!',2500); return; }
+    localStorage.setItem('user',u); localStorage.setItem('pass',p);
+    showToast('Registered successfully! Please log in.',2000);
+    showLogin();
+  }
+  function handleLogin(){
+    const u=document.getElementById('loginUsername').value.trim();
+    const p=document.getElementById('loginPassword').value;
+    const su=localStorage.getItem('user'); const sp=localStorage.getItem('pass');
+    if(u===su&&p===sp){ localStorage.setItem('loggedInUser',u); showToast('Logged in!',1500); showProfile(u); renderAuthNav(); updateCartBadge(); }
+    else{ showToast('Invalid credentials.',2000); }
+  }
+</script>
+</body>
+</html>

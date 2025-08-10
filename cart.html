@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>TechStore — Cart</title>
+
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css"/>
+
+</head>
+<body>
+<header class="navbar">
+  <div class="logo">
+<div class="logo">DatShop</div>
+    <nav class="nav-links">
+    </nav>
+  </div>
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="profile.html" id="profileLink">Profile</a>
+    <a href="cart.html">Cart 🛒<span id="cartCount" class="badge">0</span></a>
+    <a href="profile.html" id="loginLink">Login / Register</a>
+    <a href="#" id="logoutLink" style="display:none;">Logout</a>
+  </nav>
+</header>
+
+<main class="container">
+  <h2>Your Cart</h2>
+
+  <div id="cartEmpty" class="empty-box" style="display:none;">
+    Your cart is empty. <a href="index.html">Continue shopping</a>
+  </div>
+
+  <div class="cart-wrap">
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th class="th-price">Price</th>
+          <th class="th-qty">Qty</th>
+          <th class="th-sub">Subtotal</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="cartTableBody"></tbody>
+    </table>
+
+    <div class="cart-summary">
+      <div class="summary-line">
+        <label for="coupon">Coupon</label>
+        <div class="inline">
+          <input id="coupon" type="text" placeholder="SAVE10 / FREESHIP">
+          <button class="btn outline" id="applyCouponBtn" type="button">Apply</button>
+        </div>
+      </div>
+
+      <div class="summary-line"><span>Subtotal</span><strong>$<span id="sumSubtotal">0</span></strong></div>
+      <div class="summary-line"><span>Discount (<span id="appliedCode">—</span>)</span><strong>− $<span id="sumDiscount">0</span></strong></div>
+      <div class="summary-line"><span>Shipping</span><strong>$<span id="sumShipping">0</span></strong></div>
+      <div class="summary-total"><span>Total</span><strong>$<span id="sumTotal">0</span></strong></div>
+
+      <div class="actions">
+        <a class="btn outline" href="index.html">← Continue shopping</a>
+        <button class="btn primary" onclick="checkout()">Checkout</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="main.js"></script>
+</body>
+</html>
